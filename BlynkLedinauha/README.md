@@ -17,6 +17,7 @@ Ledinauhassa on kolme porttia. Portti joka on merkitty GND, tulee maadoittaa, el
 Avaa Blynk-sovellus. Luo käyttäjätunnus. Aloita uusi projekti ja nimeä se. Nimeämisen yhteydessä ohjelma kysyy, minkälaista laitetta ja yhteystyyppiä aiot käyttää. Valitse laitteeksi "Generic Board" ja yhteystyypiksi Wi-Fi. Luo projekti. Blynk lähettää sähköpostiisi (sähköpostiin, jonka ilmoitit rekisteröityessäsi) koodin, jota käytetään myöhemmin laitteen tunnistamisessa. 
 Nyt projekti on luotu, mutta sillä ei ole vielä mitään toiminnallisuuksia Blynk-sovelluksessa. Haluamme lisätä ledinauhalle värin- ja kirkkaudensäätimen. Paina oikeassa yläkulmassa sijaitsevaa +-ikonia ja lisää sieltä projektiin "Vertical Slider" ja "zeRGBa". Paina "zeRGBa"-painiketta ja vaihda ylemmästä kytkimestä split mergeksi. Valitse PIN-nelikulmioon valikosta V1.  Palaa takaisin projektin yleisnäkymään. Valitse nyt "Vertical Slider". Valitse PIN-nelikulmioon valikosta V0. Luomme näin sovellukseen kaksi virtuaalista pinniä, joiden avulla muuttelemme ledinauhan väriä ja kirkkautta.
 
+
 ### Ohjelmointi
 ```c++
 #include <Adafruit_NeoPixel.h>
@@ -33,7 +34,7 @@ Projektissa käytämme kirjastoja, jotka täytyy sisällyttää ohjelman alussa.
 char auth[] ="KIRJOITA TÄHÄN SÄHKÖPOSTIISI TULLUT PIN-KOODI";
 ```
 Määritetään #define:n avulla vakiot "WIFI_SSID" ja "WIFI_PASS", joille annetaan arvoksi verkkosi nimi ja salasana. Kirjoita molemmat "-merkkien sisään, ja varmista että ne ovat kirjoitettu oikein. Char auth:lle annetaan arvoksi se koodi, jonka Blynk lähetti sähköpostiisi.
-
+>Huomaa, että kännykkäsi ja tietokoneesi täytyy olla verkossa, jonka salasana ja nimen annoit ohjelmalle!
 
 
 ```c++
@@ -73,7 +74,7 @@ BLYNK_WRITE(V0){ //kirkkauden säädin vidgetti kirjoittaa virtuaaliseen pinniin
   strip.show();
   }
 ```
-Tässä määritämme mitä Blynk-sovellukseen luotu virtuaalinen pinni V0 tekee.
+Tässä määritämme mitä Blynk-sovellukseen luotu virtuaalinen pinni V0 tekee. Se säätelee lefinauhan kirkkautta.
 
 
 ```c++
@@ -90,7 +91,7 @@ BLYNK_WRITE(V1) //zeRGBa vidgetti kirjoittaa virtuaaliseen pinniin V1
 
 }
 ```
-Tässä määritämme mitä Blynk-sovellukseen luotu virtuaalinen pinni V1 tekee.
+Tässä määritämme mitä Blynk-sovellukseen luotu virtuaalinen pinni V1 tekee. Se säätelee ledinauhan väriä.
 
 
 ```c++
@@ -101,7 +102,7 @@ void loop() {
 }
 ```
 loop-funktiossa suoritamme Blynk-kirjastosta funktion run, joka suorittaa ohjelman. 
-'
+Aloita ohjelma lähettämällä se Featherille arduino sovelluksesta painamalla vasemmassa yläkulmassa olevaa nuolikuvaketta ja Blynkissä painamalla vasemmassa yläkulmassa olevaa kolmiota.
 
 
 
