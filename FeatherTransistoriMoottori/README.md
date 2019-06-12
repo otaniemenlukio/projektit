@@ -17,7 +17,7 @@ Tarkista että tietokoneessasi kortti ja portti ovat asetettu oikein. Mene Ardui
 Projektia tehdessä kannattaa kytkentäalustaan perustaa maadoitus- ja käyttöjänniterivit. Nämä rivit ovat yleensä pitkät poikittaiset rivit, jotka sijaitsevat kytkentäalustan reunoilla. Rivi joka on merkitty - merkillä maadoitetaan, eli kytketään Featherin GND porttiin. Rivi, joka on merkitty + merkillä kytketään käyttöjännitteeseen eli tässä tapauksessa Featherin USB porttiin. Näin jos jokin projektin komponentti täytyy maadoittaa tai kytkeä jännitteeseen, voi sen yhdistää jompaankumpaan näistä riveistä 
 
 ### Potentiometrin kytkentä
-Potentiometrissä on kolme pinniä. Keskimmäinen pinni kytketään Featherin analogiseen porttiin A2. Toinen jäljellejääneistä porteista kytktetään käyttöjännitteeseen ja toinen maadoitetaan.
+Potentiometrissä on kolme pinniä. Keskimmäinen pinni kytketään Featherin analogiseen porttiin A2. Toinen jäljellejääneistä porteista kytketään käyttöjännitteeseen ja toinen maadoitetaan.
 
 ### Transistorin kytkentä
 Transistorilla on kolme pinniä. Niistä keskimmäinen kytketään Featherin analogiseen porttiin A1. Oikeanpuolimmainen pinni kytketään toiseen moottorin porteista. Vasemmanpuolimmainen maadoitetaan. 
@@ -25,9 +25,11 @@ Transistorilla on kolme pinniä. Niistä keskimmäinen kytketään Featherin ana
 ### Moottorin kytkentä
 Moottorin toinen portti kytketään transistorin oikeanpuolimmaiseen pinniin ja toinen käyttöjännitteeseen.
 
+![Kytkentäkaavio](Kytkentäkaavio_TransistoriMoottori.png)
+
 
 ### Ohjelmointi
->Ohjelman löydät kokonaisuudessaan tämän README.md tiedoston kanssa samasta kansiosta nimellä >FeatherTransistoriMoottoriVer1.ino
+>Ohjelman löydät kokonaisuudessaan tämän README.md tiedoston kanssa samasta kansiosta nimellä FeatherTransistoriMoottoriVer1.ino
 
 ```c++ 
 #define MOOTTORI A1
@@ -54,6 +56,8 @@ void loop(){
 ````
 Feather toistaa loop-funktiota ikuisesti. Alussa luomme uuden kokonaisluku muotoisen (int) muuttujan nimeltä potentiometri. Annamme sille arvoksi analogRead-funktion avulla POTENTIOMETRI pinnin antaman arvon. Määritimme ohjelman alussa sen olevan featherin analogisen portin A2 arvo. Tämä arvo tulee vielä jakaa neljällä, koska analogRead-funktio antaa arvoja välillä 0-1023, mutta analogWrite ottaa arvoja väliltä 0-255.
 Lopuksi käytämme analogWrite-funktiota, joka antaa sille ensimmäisenä parametrinä annetulle analogiselle portille toisena parametrina annetun arvon.
+
+
 
 
 
