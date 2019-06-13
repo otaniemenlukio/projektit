@@ -10,17 +10,21 @@ Microbit on pieni tietokone, joka sisältää 24 punaista lediä, kaksi ohjelmoi
 ### Ohjelmointi
 Mene seuraavalle sivulle:
 [Linkki makecode:iin](https://makecode.microbit.org)
+&nbsp;
 
 Luo uusi projekti painamalla New Project. Ohjemassa on valmiina "on start" ja "forever"-toiminnot, poista ne.
+&nbsp;
 
+&nbsp;
 
 
 
 
 ![Ensimmäinen askel](ensimmainen_askel.png)
 Lisää ohjelmaan input-valikosta kaksi "on button _ pressed"-toiminnallisuutta ja aseta toiseen A ja toiseen B
+&nbsp;
 
-
+&nbsp;
 
 
 
@@ -28,16 +32,16 @@ Lisää ohjelmaan input-valikosta kaksi "on button _ pressed"-toiminnallisuutta 
 
 ![toinen askel](toinen_askel.png)
 Lisää ohjelmaan basic-valikosta kaksi "show string"-toiminnallisuutta ja asta ne molempien napinpainallusten sisään. Kirjoita tyhjiin kenttiin jotain, mitä haluat Microbitin sanovan kun nappeja painetaan. 
+&nbsp;
 
-
-
-
-
+&nbsp;
 
 Seuraavaksi lisäämme molempiin napinpainalluksiin pienen animaation.
 ![kolmas askel](kolmas_askel.png)
 Lisää molempiin napinpainalluksiin kolme "show leds"-toiminnallisuutta basic-valikosta. Asettele ledit niihin kuvan tapaan.
+&nbsp;
 
+&nbsp;
 
 
 
@@ -47,7 +51,9 @@ Lisää molempiin napinpainalluksiin kolme "show leds"-toiminnallisuutta basic-v
 
 ![neljäs askel](neljas_askel.png)
 Viimeisenä lisätään animaation askelten väleihin vielä pienet tauot, jotta niitä ehtii nähdä. Lisätään loppuun vielä tyhjä "show leds" että ledit sammuu lopuksi kokonaan.
+&nbsp;
 
+&nbsp;
 
 
 
