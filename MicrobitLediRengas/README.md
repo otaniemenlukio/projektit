@@ -7,7 +7,7 @@ Tässä projektissa ohjelmoidaan microbitin kanssa tomivalle ledirenkaalle kaksi
 
 ### Ledirenkaan kytkentä
 Kiinnitä ledirengas Microbittiin käyttäen viittä ruuvia kuvan osoittamalla tavalla.
-![Valokuva](LedirangasKuva.jpg)
+![Valokuva](LedirengasKuva.jpg)
 Muista liittää paristot ledirenkaaseen Kitronik-merkin yllä olevaan valkoiseen liitäntään.
 
 ```python
