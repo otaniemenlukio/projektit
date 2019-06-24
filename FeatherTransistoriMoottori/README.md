@@ -29,6 +29,8 @@ Moottorin toinen portti kytketään transistorin oikeanpuolimmaiseen pinniin ja 
 
 
 ### Ohjelmointi
+
+
 >Ohjelman löydät kokonaisuudessaan tämän README.md tiedoston kanssa samasta kansiosta nimellä FeatherTransistoriMoottoriVer1.ino
 
 ```c++ 
@@ -57,6 +59,102 @@ void loop(){
 Feather toistaa loop-funktiota ikuisesti. Alussa luomme uuden kokonaisluku muotoisen (int) muuttujan nimeltä potentiometri. Annamme sille arvoksi analogRead-funktion avulla POTENTIOMETRI pinnin antaman arvon. Määritimme ohjelman alussa sen olevan featherin analogisen portin A2 arvo. Tämä arvo tulee vielä jakaa neljällä, koska analogRead-funktio antaa arvoja välillä 0-1023, mutta analogWrite ottaa arvoja väliltä 0-255.
 Lopuksi käytämme analogWrite-funktiota, joka antaa sille ensimmäisenä parametrinä annetulle analogiselle portille toisena parametrina annetun arvon.
 
+
+
+## Puheohjauksen lisääminen
+Jos haluat, voit lisätä tuulettimelle puheohjaus ominaisuuden. Tässä osuudessa tarvitset Raspberryn ja Google Voice Kitin. 
+
+### Ohjelmointi
+
+```c++
+#include <WiFi101.h>
+#include <MQTTClient.h>
+````
+Jotta tuuletinta voi ohjata internetin välityksellä, pitää ottaa käyttöön WiFi ja MQTT-client eli välityspalvelinkirjasto.
+
+
+```c++
+#define MOOTTORI A1
+#define POTENTIOMETRI A2
+
+
+#define WIFI_NAME "12345678"
+#define PASSWORD "asdfasdf"
+
+char wifi_name[] = WIFI_NAME;
+char password[] = PASSWORD;
+
+WiFiClient wifi_client;
+MQTTClient mqtt_client;
+
+int status = WL_IDLE_STATUS;
+````
+Määritellään kytkentöjen pinnit ja Wifi-yhteyden tiedot.
+
+
+
+```c++
+void setup() {
+  Serial.begin(9600);
+
+  WiFi.setPins(8, 7, 4, 2);
+
+  while(status != WL_CONNECTED) {
+    Serial.print("Yhdistetään: ");
+    Serial.println(wifi_name);
+
+    status = WiFi.begin(wifi_name, password);
+    delay(10000);
+  }
+  Serial.println("Yhdistetty");
+
+  mqtt_client.begin("broker.shiftr.io", wifi_client);
+  
+  while (!mqtt_client.connect("asdf", "aalto-shiftr-testi", "aalto-shiftr-testi")){
+    Serial.println("Yhdistetään shiftriin");
+    delay(1000);
+  }
+  Serial.println("Yhdistetty shiftriin");
+  
+  mqtt_client.onMessage(update);
+  mqtt_client.subscribe("/tuuletin");
+}
+````
+
+```c++
+void update(String &topic, String &message){
+  Serial.println("Uusi viesti:");
+  Serial.println(message);
+
+  if(message == "full"){
+    full_speed();
+  }
+  else if(message == "half"){
+    half_speed();
+  }
+  else if(message == "off"){
+    off();
+  }
+}
+````
+
+
+```c++
+
+//Alla määritellään funktiot full_speed(), half_speed() ja off() joilla säädellään moottorin tilaa 
+void full_speed(){
+  analogWrite(MOOTTORI, 255);
+}
+void half_speed(){
+  analogWrite(MOOTTORI, 128);
+}
+void off(){
+  analogWrite(MOOTTORI, 0);
+}
+void loop() {
+   mqtt_client.loop();
+}
+```
 
 
 
