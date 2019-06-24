@@ -65,6 +65,7 @@ Lopuksi käytämme analogWrite-funktiota, joka antaa sille ensimmäisenä parame
 Jos haluat, voit lisätä tuulettimelle puheohjaus ominaisuuden. Tässä osuudessa tarvitset Raspberryn ja Google Voice Kitin. 
 
 ### Ohjelmointi
+#### Featherin osuus
 
 ```c++
 #include <WiFi101.h>
@@ -106,7 +107,7 @@ void setup() {
     status = WiFi.begin(wifi_name, password);
     delay(10000);
   }
-  Serial.println("Yhdistetty");
+  Serial.println("Yhdistetty Wifiin");
 
   mqtt_client.begin("broker.shiftr.io", wifi_client);
   
@@ -120,6 +121,7 @@ void setup() {
   mqtt_client.subscribe("/tuuletin");
 }
 ````
+Ensin yhdistetään Wifiin ja välityspalvelimeen. Kuunnellaan tuuletinaiheisia viestejä välityspalvelimelta. 
 
 ```c++
 void update(String &topic, String &message){
@@ -137,7 +139,7 @@ void update(String &topic, String &message){
   }
 }
 ````
-
+Määritellään funktio, joka ajetaan jos välityspalvelimelta saadaan tuuletinaiheinen viesti ja toimitaan sen mukaan. Eli, jos saadaan palvelimelta viesti "full", säädetään tuuletin täydelle teholle.
 
 ```c++
 
@@ -155,8 +157,30 @@ void loop() {
    mqtt_client.loop();
 }
 ```
+Määritellään funktiot jotka säätävät tuulettimet tietylle teholle.
 
+#### Raspberryn osuus
+Valmistele Google Voice Kit. Katso ohjeet:
+[Linkki Ohjeisiin](https://github.com/otaniemenlukio/projektit/tree/master/RaspberryValmistelu)
 
+```python
+import iot
+
+@iot.listen("it's too hot")
+def full():
+    iot.publish("komento_asdf","full")
+
+@iot.listen("stop")
+def off():
+    iot.publish("komento_asdf","off")
+
+@iot.listen("half speed")
+def half():
+    iot.publish("komento_asdf","half")
+
+iot.run("puheohjaus", "aalto-shiftr-testi", "aalto-shiftr-testi")
+```
+Sisällytetään ohjelmaan iot-kirjasto. Kuunnellaan mitä Google Voice Kitille on sanottu iot.listen()-komennon avulla. Lopuksi käynnistetään iot-apuri, jossa määritellään shift käyttäjätunnus ja salasana.
 
 
 
