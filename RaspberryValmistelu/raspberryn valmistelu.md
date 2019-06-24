@@ -70,3 +70,5 @@ Saat ip-osoitteen, jolla voit yhdistää raspberryn terminaaliin omalta koneelta
 13. Aja `src/examples/voice/assistant_grpc_demo.py`
 14. Aukeaa kirjautumisikkuna. Kirjaudu google-tililläsi
 15. Assistantin pitäisi toimia. Kokeile kysyä siltä jotain
+## Projektit Google assistantilla
+1. Kopioi iot.py ja AIY-kansio iot-apuri -kansiosta: https://github.com/Pohjois-Tapiolan-lukio/raspberry_pi-projects/tree/master/examples/iot-apuri
