@@ -44,3 +44,8 @@ while True:
             pass
 ````
 While True-silmukkaa toistetaan ikuisuuden. Sen sisällä on kaksi if-käskyä, joiden avulla määritetää, mitä nappien painalluksessa tapahtuu. Jos nappia A painetaan, ledin paikka siirtyy yhden vasemmalle. Current_pixel-muuttujasta vähennetään yksi. Kun nappia B painetaan siirtyy ledi yhden oikealle, joten muuttujaan lisätään yksi. Jotta current_pixel-muuttujalle ei tulisi ikinä arvoa, joka on suurepi kuin 23 tai pienempi kuin nolla, seuraavalla rivillä sille annteaan arvoksi itsensä ja 24 jakojäännös. Tämä tehdään %-merkillä. For-silmukan sisällä sammutamme ensin kaikki ledit. Pixels on lista
+
+
+
+[Koodi koodilohkoilla](https://makecode.microbit.org/_0s08bAE98Rdg)
+
