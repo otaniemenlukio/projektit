@@ -2,7 +2,7 @@ from microbit import *
 import neopixel
 import math
 num_of_pix = 24
-np = neopixel.NeoPixel(pin0, num_of_pix)
+pixels = neopixel.NeoPixel(pin0, num_of_pix)
 
 def get_angle():
     values = accelerometer.get_values()
@@ -26,9 +26,9 @@ def normalisointialgoritmi(angle):
 while True:
     angle=get_angle
     i=normalisointialgoritmi(angle)
-    np.clear()
-    np[i]=(255,255,255)
-    np.show()
+    pixels.clear()
+    pixels[i]=(255,255,255)
+    pixels.show()
 
 
     

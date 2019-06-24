@@ -54,13 +54,17 @@ While True-silmukkaa toistetaan ikuisuuden. Sen sisällä on kaksi if-käskyä, 
 [Koodi koodilohkoilla](https://makecode.microbit.org/_0s08bAE98Rdg)
 
 
-
+```python
 from microbit import *
 import neopixel
 import math
 num_of_pix = 24
-np = neopixel.NeoPixel(pin0, num_of_pix)
+pixels = neopixel.NeoPixel(pin0, num_of_pix)
+```
+Otetaan kirjastot käyttöön ja luodaan pixels-olio.
 
+
+```python
 def get_angle():
     values = accelerometer.get_values()
     if values[0]!=0:
@@ -79,13 +83,14 @@ def get_angle():
     return angle
 def normalisointialgoritmi(angle):
     return int((angle//15+6)%24)
-
+```
+Määritellään funktiot, joiden avulla saadaan kallistussuunta, ja suunta muutettua ledien indekseiksi. Varsinkin kulmanlaskemisfunktio on melko sekava ja siinä käytetään trigonometriaa, joten sitä ei ole pakko ymmärtää.
+```python
 while True:
-    angle=get_angle
+    angle=get_angle()
     i=normalisointialgoritmi(angle)
-    np.clear()
-    np[i]=(255,255,255)
-    np.show()
-
-
- 
+    pixels.clear()
+    pixels[i]=(255,255,255)
+    pixels.show()
+```
+Ohjelman pääsilmukassa laitetaan päälle se ledi, jota kohti microbitiä kallistetaan.
