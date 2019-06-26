@@ -73,6 +73,7 @@ void loop() {
   Serial.print(rawData);
   Serial.print(" ");
   Serial.println(Vernier.sensorUnits());
+  delay(100);
 }
 ```
 #### Analogisten sensorien kalibroiminen
@@ -89,6 +90,8 @@ void loop() {
   Serial.print(sensorData);
   Serial.print(" ");
   Serial.println(Vernier.sensorUnits());
+  delay(100);
+
 }
 ```
 2. Nyt on tarkoitus etsiä arvot vakioille k ja b. Mittaa sensori siinä tilanteessa, että sen kuuluisi saada arvoja nolla. Esimerkiksi voimamittarilla niin, että koukku saa levätä vapaasti, jännitemittarilla niin, että päät ovat oikosulussa ja magneettikentän voimakkuuden sensorilla faradayn häkissä. Jos mittarin antama arvo ei ole nolla, ota se muistiin ja korvaa b sillä.
@@ -125,6 +128,47 @@ int dropCounterStatus = digitalRead(DROP_COUNTER_PIN);
 
 #### Rotary Motion Sensor
 Pyörimissensori vaatii hyvin tarkan ohjelman, jotta se toimii oikein. Katso mallia sivulta https://www.vernier.com/engineering/arduino/digital-sensors/rotary-motion/
+
+### Viisari
+
+Sensoridataa voi visualisoida esimerkiksi servolla:
+![Liitäntä](liitäntävernier.jpg)
+Kytke punainen johto 5V, musta GND ja vihreä johonkin pinniin, jonka vieressä lukee ~
+
+Tässä esimerkissä se kytkettiin pinniin 10.
+
+```c++
+#include <VernierLib.h>
+#include <Servo.h>
+
+VernierLib Vernier;
+Servo servo;
+
+#define SERVO_PIN 10
+
+#define SENSORI_LOWER_BOUND -10
+#define SENSORI_UPPER_BOUND 10
+
+void setup() {
+  Vernier.autoID();
+  servo.attach(SERVO_PIN);
+  Serial.begin(9600);
+}
+float k = 1;
+float b = 0;
+void loop() {
+  float rawData = Vernier.readSensor();
+  float sensorData = k * rawData - b;
+  Serial.print(sensorData);
+  Serial.print(" ");
+  Serial.println(Vernier.sensorUnits());
+  int angle = map(sensorData, SENSORI_LOWER_BOUND, SENSORI_UPPER_BOUND, 0, 180);
+  servo.write(angle);
+  Serial.println(angle);
+  delay(100);
+}
+```
+
 
 
 ### Sensoridatan hyödyntäminen muissa sovelluksissa
