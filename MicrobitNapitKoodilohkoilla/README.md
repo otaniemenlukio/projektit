@@ -2,7 +2,7 @@
 Tässä yksinkertaisessa projektissa harjoitellaan koodilohkojen ja Microbitin käyttämistä. Ohjelmoimme mikrobitin napit tekemään jotain.
 
 ## Microbit
-Microbit on pieni tietokone, joka sisältää 24 punaista lediä, kaksi ohjelmoitavaa nappia, liikkeentunnisimen ja kompassin. Microbit voi myös olla bluetooth yhteydssä esim. tietokoneen kanssa ja voi ottaa yhteyden myös internettiin.
+Microbit on pieni tietokone, joka sisältää 25 punaista lediä, kaksi ohjelmoitavaa nappia, liikkeentunnisimen ja kompassin. Microbit voi myös olla bluetooth yhteydssä esim. tietokoneen kanssa ja voi ottaa yhteyden myös internettiin.
 
 ### Tarvikkeet
 - Microbit ja siihen USB-johto
