@@ -2,8 +2,11 @@
 Vernier-sensoreita voi käyttää arduinon kanssa. Ensin yhdistetään arduinoon tarvittava rajapinta.
 ### Tarvikkeet
 - Arduino ja siihen USB-liitäntä
-- Vernier sensoreiden rajapinta arduinoon
+- Vernier sensoreiden rajapinta arduinoon: Protoboard TAI Interface Shield
 - Tarvittavia Vernier-sensoreita
+
+
+#### Interface Shield
 
 ![Erikseen](Erikseen.jpg)
 
@@ -16,6 +19,19 @@ Vasemmalla Arduino, Oikealla Rajapinta
 Arduino ja Rajapinta yhdistettynä. Laita Arduinon ja rajapinnan pinnit siten, että jokainen rajapinnan pinni on kunnolla kiinni Arduinossa.
 &nbsp;
 
+#### Protoboard
+
+
+![Protoboard](vernieradapteri.jpg)
+
+Protoboard-adapteri toimii samalla tavalla kuin shield, mutta jättää pinnejä vapaaksi myös muuhun käyttöön, joten se on monesti parempi.
+
+Kytke se kytkentäkaavion mukaan:
+
+
+![Kytkentä](vernier_adapter.png)
+
+![Kytkentä](vernierkytkentä.jpg)
 
 > Lataa tietokoneellesi Vernier-kirjasto. Se löytyy Arduino-sovelluksen Työkalut-valikosta kohdasta "hallitse kirjastoja". Kirjoita hakukentään "VernierLib" ja lataa kirjasto.
 
@@ -109,4 +125,7 @@ int dropCounterStatus = digitalRead(DROP_COUNTER_PIN);
 
 #### Rotary Motion Sensor
 Pyörimissensori vaatii hyvin tarkan ohjelman, jotta se toimii oikein. Katso mallia sivulta https://www.vernier.com/engineering/arduino/digital-sensors/rotary-motion/
+
+
+### Sensoridatan hyödyntäminen muissa sovelluksissa
 
