@@ -24,7 +24,7 @@ def normalisointialgoritmi(angle):
     return int((angle//15+6)%24)
 
 while True:
-    angle=get_angle
+    angle=get_angle()
     i=normalisointialgoritmi(angle)
     pixels.clear()
     pixels[i]=(255,255,255)
