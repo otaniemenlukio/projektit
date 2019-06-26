@@ -148,7 +148,10 @@ Servo servo;
 
 #define SENSORI_LOWER_BOUND -10
 #define SENSORI_UPPER_BOUND 10
+```
+Otetaan käyttöön servo.h-kirjasto ja luodaan servo-olio. Määritellään myös pinni, johon servo on kytketty ja sensorin ala- ja ylärajat.
 
+```c++
 void setup() {
   Vernier.autoID();
   servo.attach(SERVO_PIN);
