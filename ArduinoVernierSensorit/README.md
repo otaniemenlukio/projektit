@@ -1,8 +1,8 @@
 # Arduino Vernier-sensorit
-Vernier-sensoretia voi käyttää arduinon kanssa. Ensin yhdistetää Arduinoon tarvittava rajapinta.
+Vernier-sensoreita voi käyttää arduinon kanssa. Ensin yhdistetään arduinoon tarvittava rajapinta.
 ### Tarvikkeet
 - Arduino ja siihen USB-liitäntä
-- Vernier Sensoreiden rajapinta arduinoon
+- Vernier sensoreiden rajapinta arduinoon
 - Tarvittavia Vernier-sensoreita
 
 ![Erikseen](Erikseen.jpg)
