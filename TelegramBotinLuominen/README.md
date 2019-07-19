@@ -5,7 +5,6 @@ Ohjeistus Telegram-viestittelusovelluksessa toimivan botin luontia varten.
 Aloita uusi keskustelu Botfatherin kanssa
 &nbsp;
 
-![valmistelu](valmistelu.jpg)
 &nbsp;
 
 
