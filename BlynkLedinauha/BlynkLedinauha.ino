@@ -5,10 +5,10 @@
 #include <BlynkSimpleWiFiShield101.h>
 
 
-#define WIFI_SSID "KIRJOITA TÄHÄN NETIN NIMI"
-#define WIFI_PASS "KIRJOITA TÄHÄN NETIN SALASANA"
+#define WIFI_SSID "Honor 10 Lite"
+#define WIFI_PASS "Vikionsopo"
 
-char auth[] ="KIRJOITA TÄHÄN SÄHKÖPOSTIISI TULLUT PIN-KOODI";
+char auth[] ="29b8abec10b341b7a250988537b43591";
 
 
 #define PIN 12    //featherissä pinni johon ledinauha on kytketty
