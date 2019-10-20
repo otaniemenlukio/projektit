@@ -5,6 +5,7 @@ Developed by Marcelo Rovai - MJRoBot.org @ 22Feb2018
 Editted mxheikki @20Oct2019
 
 Face and smile regognition triggers serial communication with microbit and arduino.
+If picamera doesnt work, try command: sudo modprobe bcm2835-v4l2
 
 '''
 
