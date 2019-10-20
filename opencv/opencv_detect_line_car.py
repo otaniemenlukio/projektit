@@ -1,6 +1,6 @@
 '''
-OPENCV INSTALLATION GUIDE for Rasberry pi:
-1.Install python3 pip
+Installation Guide:
+1.Install python pip if necessary
 wget https://bootstrap.pypa.io/get-pip.py
 sudo python3 get-pip.py
 
@@ -46,7 +46,7 @@ camera.resolution = (640, 480)
 
 car = DRV8835() # if Pololulu Motoredriver is used
 car.stop()
-SPEED = 30
+SPEED = 45
 LEFT = 1.0
 RIGHT = 1.0
 
