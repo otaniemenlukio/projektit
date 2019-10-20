@@ -1,7 +1,11 @@
 '''
 Haar Cascade Face and Smile detection with OpenCV  
 
-Developed by Marcelo Rovai - MJRoBot.org @ 22Feb2018 
+Developed by Marcelo Rovai - MJRoBot.org @ 22Feb2018
+Editted mxheikki @20Oct2019
+
+Face and smile regognition triggers serial communication with microbit and arduino.
+
 '''
 
 import numpy as np
