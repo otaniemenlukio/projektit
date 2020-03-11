@@ -39,7 +39,7 @@ circle(200, 200, 50)        # ympyrä, ensin x, y -koordinaatit, sitten säde
 ellipse(200, 200, 100, 50)  # ellipsi, ensin x, y -koordinaatit, sitten leveys ja korkeus
 
 
-fill(255, 0, 0)               # Ennen kuvioita voi käyttää funkioita fill ja noFill, jotka määräävät, täytetäänkö kuvio
+fill(255, 0, 0)             # Ennen kuvioita voi käyttää funkioita fill ja noFill, jotka määräävät, täytetäänkö kuvio
 noFill()                    # fill ottaa parametriksi värin, noFill nollaa kaiken, joten se ei tarvitse parametria
 
 beginShape()                # piirtää monikulmion, jonka kulmat ovat pisteissä (300, 200), (300, 300) ja (400, 400)
