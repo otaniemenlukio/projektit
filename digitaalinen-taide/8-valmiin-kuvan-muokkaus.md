@@ -13,7 +13,7 @@ void setup() {
      color c = img.get(x,y);
      float r = red(c);
      float g = blue(c);
-     float b = green(c);
+     float b = green(c)+10;
      img.set(x, y, color(r, g, b));
    }
  }
@@ -35,3 +35,5 @@ Tällä tavalla voi muokata yksittäisiä pikseleitä ja niiden komponentteja. E
 ![maisema3](images/maisema3.png)
 ![maisema4](images/maisema4.png)
 ![maisema5](images/maisema5.png)
+
+Vaikka tällaisen muutoksen saa tehtyä helposti kuvanmuokkausohjelmassa, esimerkiksi Photoshopissa tai Lightroomissa, näin voi muokata erittäin tarkasti yksi pikseli kerrallaan, ja halutessaan lisätä muuta logiikkaa. Lisäksi tällä tavalla oppii, miten esimerkiksi kuvan lämpötila, kirkkaus tai kontrasti syntyy yksittäisistä pikseleistä.
