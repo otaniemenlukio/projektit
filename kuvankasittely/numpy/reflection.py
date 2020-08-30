@@ -8,7 +8,7 @@ Created on Sun Aug 30 18:47:12 2020
 
 import numpy as np
 from scipy import ndimage as ndi
-from skimage.io import imread
+from skimage.io import imread, imsave
 from skimage.color import rgb2gray, gray2rgb
 import matplotlib.pylab as plt
 
@@ -20,6 +20,7 @@ matrix_reflect = np.array([[1,0,0],[0,-1,0],[0,0,1]]) @ np.array([[1,0,0],[0,1,-
 
 im1 = ndi.affine_transform(image, matrix_identity)
 im2 = ndi.affine_transform(image, matrix_reflect)
+imsave('bike_numpy.jpg',im2)
 #im1 = gray2rgb(image)
 
 plt.figure(figsize=(40,20))
