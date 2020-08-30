@@ -43,7 +43,7 @@ print(channels)
 
 
 plt.figure()
-plt.subplot(131), plt.imshow(im1), plt.axis('off'), plt.title('original', size=20)
-plt.subplot(132), plt.imshow(im_G), plt.axis('off'), plt.title('reflected', size=20)
-plt.subplot(133), plt.imshow(im_B), plt.axis('off'), plt.title('flipped', size=20)
+plt.subplot(131), plt.imshow(image), plt.axis('off'), plt.title('original', size=20)
+plt.subplot(132), plt.imshow(im_R), plt.axis('off'), plt.title('red ch flip', size=20)
+plt.subplot(133), plt.imshow(im1), plt.axis('off'), plt.title('flipped color', size=20)
 plt.show()
