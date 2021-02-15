@@ -5,8 +5,8 @@ import math
 import requests
 
 
-BOT_API_TOKEN = 'Token Here'
-GROUP_ID = 'Group ID here'
+BOT_API_TOKEN = 'INSERT YOUR TOKEN HERE'
+GROUP_ID = 'INSERT YOUR GROUP-ID'
 TG_URL = 'https://api.telegram.org/bot'+ BOT_API_TOKEN
 
 def send_to_telegram(filename, type):
@@ -51,11 +51,12 @@ while(True):
             if math.sqrt((x-width/2)**2+(y-height/2)**2)<25:
                 #print("Found")
                 cv2.imwrite('bird'+str(i)+'.jpg',cv2.flip(t1,-1))
-                i = i+1
+                
                 url = TG_URL + '/sendMessage'
                 telegram_message = 'bird'+str(i)+' was dedected!'
                 res = requests.post(url, params={'chat_id': GROUP_ID}, data ={'text': telegram_message})
                 send_to_telegram('bird'+str(i)+'.jpg','photo')
+                i = i+1
                 #if i>3:
                     #break
         print("next")
@@ -68,7 +69,7 @@ while(True):
     
     
     t1=cap.read()[1]
-    if i>5:
+    if i>10:
         break
     
     if cv2.waitKey(5) == 27 :
