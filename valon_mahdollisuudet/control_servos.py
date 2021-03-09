@@ -5,11 +5,11 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 #set pins
-pan = 26
-tilt = 16
+pan = 16
+tilt = 26
 
-GPIO.setup(tilt, GPIO.OUT) # white => TILT
-GPIO.setup(pan, GPIO.OUT) # gray ==> PAN
+GPIO.setup(tilt, GPIO.OUT) # pysty => TILT
+GPIO.setup(pan, GPIO.OUT) # vaaka ==> PAN
 
 def setServoAngle(servo, angle):
 	assert angle >=30 and angle <= 150
