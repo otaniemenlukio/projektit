@@ -6,30 +6,14 @@ GPIO.setwarnings(False)
 from drv8835 import DRV8835
 #import control_servos
 import input_handling
-#import time
+from servos import SERVOS
 
 CAR = DRV8835()
 CAR.stop()
 SPEED = 60
 TURNING_SPEED = 30
-# aseta pinnit
-pan = 16
-tilt = 26
 
-GPIO.setup(tilt, GPIO.OUT) # vaaka => TILT
-GPIO.setup(pan, GPIO.OUT) # pysty ==> PAN
-
-pan_angle = 70
-tilt_angle = 110
-
-def setServoAngle(servo, angle):
-	assert angle >=30 and angle <= 150
-	pwm = GPIO.PWM(servo, 50)
-	pwm.start(8)
-	dutyCycle = angle / 18. + 3.
-	pwm.ChangeDutyCycle(dutyCycle)
-	sleep(0.3)
-	pwm.stop()
+SERVOS = SERVOS()
 
 
 def drive_forward():
@@ -49,9 +33,21 @@ def drive_right():
     CAR.forward(TURNING_SPEED, SPEED)
     
 # for testing    
-def pan_servo_right():
-    for i in range (30, 160, 15):
-        setServoAngle(pan, i)
+def pan_right():
+    current_angle = SERVOS.getServoAngle('pan')
+    SERVOS.setServoAngle('pan',current_angle - 15 )
+
+def pan_left():
+    current_angle = SERVOS.getServoAngle('pan')
+    SERVOS.setServoAngle('pan',current_angle + 15 )
+    
+def tilt_up():
+    current_angle = SERVOS.getServoAngle('tilt')
+    SERVOS.setServoAngle('tilt',current_angle + 15 )
+
+def tilt_down():
+    current_angle = SERVOS.getServoAngle('tilt')
+    SERVOS.setServoAngle('tilt',current_angle - 15 )
 # funktio, jota kutsutaan nappia painaessa
 
 INPUT_MAP = {
@@ -60,7 +56,10 @@ INPUT_MAP = {
     '\x1b[D': drive_left, 
     '\x1b[C': drive_right,
     '-': CAR.stop,
-    'f': pan_servo_right, #up arrow
+    'f': pan_right,
+    's': pan_left,
+    'e': tilt_up,
+    'd': tilt_down,
     }
 
 def main():
@@ -81,6 +80,6 @@ def main():
             INPUT_MAP[key]()
         print("You pressed", key)
         
-        
+    SERVOS.stopServos()   
     input_handling.exit(orig_settings)
 main()
