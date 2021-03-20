@@ -7,7 +7,7 @@ from time import sleep
 
 #ESC Brushles motor states: direction, on/off
 toggleState = 400
-init_throttle = 430
+init_throttle = 400
 delta_throttle = 20
 driving = False
 if init_throttle > toggleState:
@@ -20,6 +20,7 @@ else:
 fwdmax = 600
 revmin = 200
 
+arm = 0
 
 #steering pwm values for Servo
 steering_center = 370
@@ -37,6 +38,8 @@ curses.noecho()
 curses.cbreak()
 screen.keypad(True)
 
+
+
 def printscreen():
         # The command os.system('clear') clears the screen.
         os.system('clear')
@@ -44,7 +47,6 @@ def printscreen():
         print(u"\u2191/\u2193: accelerate/brake\r")
         print(u"\u2190/\u2192: left/right\r")
         print("q:   stops the motor and exit\r")
-        print("x:   exit the program\r")
         print("s:   start the program\r")
         
 
@@ -59,41 +61,41 @@ while True:
         break
     elif char == ord('-'):
         steering_pwm = steering_center
-        print('center steering')
+        
     
-    elif char == ord('s'):
-        print("lets start driving!")
+    elif char == ord('s'): 
         driving = True
-        pwm.set_pwm(2,0,toggleState)
-        sleep(0.1)
+        
     elif char == curses.KEY_UP:
-        print('forward')
-        if throttle_pwm == init_throttle and not driving:
+        
+        if throttle_pwm == init_throttle:
             time.sleep(0.2)
-            continue
-        elif throttle_pwm + delta_throttle < fwdmax:
+            
+        if throttle_pwm + delta_throttle < fwdmax:
             throttle_pwm += delta_throttle
             if throttle_pwm > toggleState and dir < 0:
-                pwm.set_pwm(2,0,toggleState)
-                print('toggle1')
+                pwm.set_pwm(2,0,toggleState)     
                 dir = 1
-                sleep(0.1)
+                print(dir)
+                
                     
     elif char == curses.KEY_DOWN:
-        print('reverse')
-        if throttle_pwm == init_throttle and not driving:
-            time.sleep(0.2)
-            continue
-        elif throttle_pwm +delta_throttle > revmin:
+        #if throttle_pwm == init_throttle:# and not driving:
+            #time.sleep(0.2)
+            #continue
+        if throttle_pwm +delta_throttle > revmin:
             throttle_pwm -= delta_throttle
-            if throttle_pwm < toggleState and dir > 0:
+            if throttle_pwm <= toggleState and dir > 0:
                 pwm.set_pwm(2,0,toggleState)
-                print('toggle2')
+                sleep(0.1)
+                pwm.set_pwm(2,0,200)
+                sleep(0.2)
                 dir = -1
+                print(dir)
                 sleep(0.1)
     
     elif char == curses.KEY_RIGHT:
-        print('right')
+        #print('right')
         steering_pwm -= delta_steering
         if steering_pwm < steering_min_right:
             steering_pwm = steering_min_right                
@@ -108,7 +110,8 @@ while True:
     print(throttle_pwm)
     pwm.set_pwm(2, 0, throttle_pwm)
     pwm.set_pwm(1, 0, steering_pwm)
-    sleep(0.2)
+    sleep(0.01)
+    
     
 curses.nocbreak(); screen.keypad(0); curses.echo()
 curses.endwin()   
