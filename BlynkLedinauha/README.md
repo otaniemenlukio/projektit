@@ -14,7 +14,7 @@ Ledinauhassa on kolme porttia. Portti joka on merkitty GND, tulee maadoittaa, el
 ![Kytkentäkaavio](Kytkentäkaavio.png)
 
 ### Blynkin käyttöönotto
-Avaa Blynk-sovellus. Luo käyttäjätunnus. Aloita uusi projekti ja nimeä se. Nimeämisen yhteydessä ohjelma kysyy, minkälaista laitetta ja yhteystyyppiä aiot käyttää. Valitse laitteeksi "Generic Board" ja yhteystyypiksi Wi-Fi. Luo projekti. Blynk lähettää sähköpostiisi (sähköpostiin, jonka ilmoitit rekisteröityessäsi) koodin, jota käytetään myöhemmin laitteen tunnistamisessa. 
+Avaa Blynk-sovellus. Luo käyttäjätunnus. Aloita uusi projekti ja nimeä se. Nimeämisen yhteydessä ohjelma kysyy, minkälaista laitetta ja yhteystyyppiä aiot käyttää. Valitse laitteeksi "Generic Board" ja yhteystyypiksi Wi-Fi. Luo projekti. Blynk lähettää sähköpostiisi (sähköpostiin, jonka ilmoitit rekisteröityessäsi) koodin, jota käytetään myöhemmin laitteen tunnistamisessa.
 Nyt projekti on luotu, mutta sillä ei ole vielä mitään toiminnallisuuksia Blynk-sovelluksessa. Haluamme lisätä ledinauhalle värin- ja kirkkaudensäätimen. Paina oikeassa yläkulmassa sijaitsevaa +-ikonia ja lisää sieltä projektiin "Vertical Slider" ja "zeRGBa". Paina "zeRGBa"-painiketta ja vaihda ylemmästä kytkimestä split mergeksi. Valitse PIN-nelikulmioon valikosta V1.  Palaa takaisin projektin yleisnäkymään. Valitse nyt "Vertical Slider". Valitse PIN-nelikulmioon valikosta V0. Luomme näin sovellukseen kaksi virtuaalista pinniä, joiden avulla muuttelemme ledinauhan väriä ja kirkkautta.
 
 
@@ -24,7 +24,7 @@ Nyt projekti on luotu, mutta sillä ei ole vielä mitään toiminnallisuuksia Bl
 #include <WiFi101.h>
 #include <BlynkSimpleWifiShield101.h>
 ```
-Projektissa käytämme kirjastoja, jotka täytyy sisällyttää ohjelman alussa. Jos kirjastoja, "Adafruit_NeoPixel.h." ja "WiFi101.h" ei ole vielä asennettu, voi sen tehdä "työkalut"-valikosta kohdasta "Ylläpidä kirjastoja...". Kirjoita hakukenttään halutun kirjaston nimi, ja asenna se. 
+Projektissa käytämme kirjastoja, jotka täytyy sisällyttää ohjelman alussa. Jos kirjastoja, "Adafruit_NeoPixel.h." ja "WiFi101.h" ei ole vielä asennettu, voi sen tehdä "työkalut"-valikosta kohdasta "Ylläpidä kirjastoja...". Kirjoita hakukenttään halutun kirjaston nimi, ja asenna se.
 
 
 ```c++
@@ -74,7 +74,7 @@ BLYNK_WRITE(V0){ //kirkkauden säädin vidgetti kirjoittaa virtuaaliseen pinniin
   strip.show();
   }
 ```
-Tässä määritämme mitä Blynk-sovellukseen luotu virtuaalinen pinni V0 tekee. Se säätelee lefinauhan kirkkautta.
+Tässä määritämme mitä Blynk-sovellukseen luotu virtuaalinen pinni V0 tekee. Se säätelee ledinauhan kirkkautta.
 
 
 ```c++
@@ -101,11 +101,5 @@ void loop() {
 
 }
 ```
-loop-funktiossa suoritamme Blynk-kirjastosta funktion run, joka suorittaa ohjelman. 
+loop-funktiossa suoritamme Blynk-kirjastosta funktion run, joka suorittaa ohjelman.
 Aloita ohjelma lähettämällä se Featherille arduino sovelluksesta painamalla vasemmassa yläkulmassa olevaa nuolikuvaketta ja Blynkissä painamalla vasemmassa yläkulmassa olevaa kolmiota.
-
-
-
-
-
-
